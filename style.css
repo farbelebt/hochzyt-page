@@ -1,0 +1,485 @@
+@charset "UTF-8";
+
+/* =====================================
+       Alle Inhalte 2018 farbelebt.ch
+   ===================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i');
+
+a:link {
+	color: #658abc;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #658abc;
+}
+
+a:hover {
+	color: #d1b96a;
+}
+
+a:active {
+	color: #d1b96a;
+}
+
+body {
+	background: #fff url(bilder/hg_anemonen.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: 50px 200px 1fr 100px;
+	grid-template-columns: repeat(5, 1fr);
+	grid-row-gap: 10px;
+	grid-column-gap: 20px;
+	grid-template-areas:
+	"navigation navigation navigation navigation navigation" 
+	". logo logo logo ."
+	"aside content content content ." 
+	"footer footer footer footer footer";
+	color: #00537a;
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 1.5em;
+	margin: 0px;
+}
+
+.alle_meldungen {
+	border-radius: 5px;
+    background-color: #3a3a3a;
+	margin: 0px 0px 0px 10px;
+}
+
+.fehler_meldungen {
+  color: orange;
+}
+
+.info_meldungen {
+  color: yellowgreen;
+}
+
+h1 {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: 500;
+	font-style: italic;
+	letter-spacing: 0.1em;
+	line-height: 1.5em;
+	color: #d1b96a;
+	font-size: 40px;
+	text-align: center;
+	width: 100%;
+}
+
+h2 {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	font-size: 40px;
+	letter-spacing: 0.1em;
+	line-height: 1.5em;
+	text-align: center;
+}
+
+h3 {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: 300;
+	font-size: 25px;
+}
+
+.welcome_image {
+	width: 100%;
+	padding-top: 10px;
+}
+
+logo {
+	grid-area: logo;
+	grid-column-start: 2;
+	grid-column-end: 5;
+	grid-row-start: 2;
+	grid-row-end: 3;
+	align-self: center;
+	justify-self: center;
+}
+
+.heading_text {
+	background-image: url(bilder/paar_text_kopfzeile.png);
+	background-size: 900px 158px;
+	position: relative;
+	overflow: visible;
+	height: 158px;
+	width: 900px;
+	text-align: center;
+}
+
+.herzlogo {
+	height: 240px;
+	width: 240px;
+}
+
+.fest_infos {
+	text-align: center;
+}
+
+.fest_infos li {
+	list-style-type: none;
+}
+
+navigation {
+	grid-area: navigation;
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 1;
+	grid-row-end: 2;
+	background-color: rgba(96, 61, 31, 0.8);
+}
+
+.nav {
+	width: 100%;
+	text-align: center;
+}
+
+.nav ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+
+.nav ul li {
+	display: inline-block;
+	font-family: 'Alegreya Sans', sans-serif;
+	letter-spacing: 0.1em;
+	font-size: 18px;
+	white-space: nowrap;
+}
+
+.nav ul li a {
+	display: block;
+	padding: 6px 20px;
+	text-decoration: none;
+	border-top: 4px solid transparent;
+	color: #d1b96a;
+}
+
+.nav ul li a:hover {
+	border-bottom: 4px solid rgb(187, 213, 247);
+	color: #bbd5f7;
+	transition: all ease 0.8s;
+}
+
+.nav ul li a:active {
+	border-bottom: 4px solid rgb(187, 213, 247);
+	color: #fff;
+	transition: all ease 0.8s;
+}
+
+.nav ul li a.current_page {
+	border-bottom: 4px solid rgb(187, 213, 247);
+	color: #bbd5f7;
+	transition: all ease 0.8s;
+}
+
+aside {
+	grid-area: aside;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 3;
+	grid-row-end: 4;
+}
+
+content {
+	background: #fff;
+	border-radius: 5px;
+	grid-area: content;
+	grid-column-start: 2;
+	grid-column-end: 5;
+	grid-row-start: 3;
+	grid-row-end: 4;
+	padding: 15px 15px 15px 15px;
+}
+
+input, textarea, select {
+	font-family: 'Alegreya Sans', sans-serif;
+	font-size: 15px;
+	width: 80%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.table_admin {
+    border-collapse: collapse;
+    width: 100%;
+	font-size: 15px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.form_background {
+	border-radius: 5px;
+    background-color: rgba(96, 61, 31, 0.5);
+	color: #bbd5f7;
+    padding: 10px;
+	margin: 0px 0px 0px 10px;
+}
+
+.blog_background {
+	border-radius: 5px;
+    background-color: #f0f6ff;
+    padding: 10px;
+	width: 80%;
+}
+
+button {
+    background-color: #00537a;
+    border: none;
+    color: #fff;
+	font-family : inherit;
+	font-size: 15px;
+    padding: 10px 20px;
+    text-decoration: none;
+	border-radius: 4px;
+    margin: 3px 1px;
+    cursor: pointer;
+}
+
+.klein {
+	font-size: 15px;
+}
+
+footer {
+	align-self: center;
+	border-radius: 5px 5px 0px 0px;
+	grid-area: footer;
+	grid-column-start: 1;
+	grid-column-end: 6;
+	grid-row-start: 4;
+	grid-row-end: 5;
+	text-align: center;
+	padding: 15px 15px 0px 15px;
+}
+
+#map {
+	height: 800px;
+}
+
+#impressum {
+	font-weight: 500;
+	font-size: 13px;
+}
+
+#totop {
+	display: none;
+	position: fixed;
+	right: 0px;
+	bottom: 10px;
+	padding: 3px;
+}
+
+@media screen and (max-width:1024px) {
+
+	/* Tablet-Formate */
+	
+	body {
+		grid-template-rows: 50px 175px 1fr 100px;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas:
+		"navigation navigation navigation navigation" 
+		"logo logo logo logo"
+		"aside content content content" 
+		"footer footer footer footer";
+		font-size: 18px;
+	}
+	
+	logo {
+		grid-column-start: 1;
+		grid-column-end: 5;
+		grid-row-start: 2;
+		grid-row-end: 3;
+	}
+
+	content {
+		grid-column-start: 2;
+		grid-column-end: 5;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+	
+	aside {
+		grid-column-start: 1;
+		grid-column-end: 2;
+		grid-row-start: 3;
+		grid-row-end: 4;
+	}
+
+	footer {
+		grid-column-start: 1;
+		grid-column-end: 5;
+		grid-row-start: 4;
+		grid-row-end: 5;
+	}
+	
+	h1 {
+		font-size: 37px;
+	}
+
+	h2 {
+		font-size: 37px;
+	}
+
+	h3 {
+		font-size: 23px;
+	}
+	
+	.klein {
+		font-size: 13px;
+	}
+
+	.heading_text {
+		background-size: 800px 140px;
+		height: 140px;
+		width: 800px;
+		text-align: center;
+	}
+
+	.herzlogo {
+		height: 170px;
+		width: 170px;
+		margin-top: -15px;
+	}
+
+	navigation {
+		grid-column-start: 1;
+		grid-column-end: 5;
+		grid-row-start: 1;
+		grid-row-end: 2;
+	}
+	
+	.nav ul li {
+		font-size: 15px;
+	}
+
+}
+
+@media screen and (max-width:660px) {
+
+	/* Smartphone-Formate */
+	
+	body {
+		grid-template-rows: 142px 1fr 1fr 1fr 100px;
+		grid-template-columns: 100%;
+		grid-template-areas:
+		"logo"
+		"navigation" 
+		"aside"
+		"content" 
+		"footer";
+		font-size: 16px;
+		background: none;
+		background-color: #f0f6ff;
+	}
+
+	logo, navigation, footer {
+		grid-column-start: auto;
+		grid-column-end: auto;
+		grid-row-start: auto;
+		grid-row-end: auto;
+		text-align: center;
+	}
+
+	content {
+		grid-column-start: auto;
+		grid-column-end: auto;
+		grid-row-start: auto;
+		grid-row-end: auto;
+	}
+	
+	h1 {
+		font-size: 28px;
+	}
+
+	h2 {
+		font-size: 28px;
+	}
+
+	h3 {
+		font-size: 19px;
+	}
+	
+	.klein {
+		font-size: 13px;
+	}
+
+	.heading_text {
+		background-image: url(bilder/paar_text_kopfzeile_small.png);
+		background-size: 250px 122px;
+		height: 122px;
+		width: 250px;
+		text-align: center;
+		margin: 10px 0px 10px 0px;
+	}
+
+	.herzlogo {
+		display: none;
+	}
+
+	.nav ul {
+		width: 100%;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	.nav ul li {
+		width: 100%;
+		float: left;
+		font-size: 15px;
+	}
+
+	.nav ul li a {
+		padding: 8px 0px;
+		border-top: 1px solid #d1b96a;
+		display: block;
+	}
+	
+	input, textarea, select {
+		font-size: 15px;
+		width: 100%;
+		padding: 5px 10px;
+    	margin: 5px 0;
+	}
+	
+	table {
+    	border-collapse: collapse;
+    	width: 100%;
+	}
+	
+	button {
+    	padding: 5px 10px;
+    	margin: 5px 0;
+	}
+	
+	.form_background {
+		border-radius: 5px;
+    	background-color: rgb(96, 61, 31);
+		margin: 15px;
+	}
+	
+	.alle_meldungen {
+		margin: 15px;
+	}
+
+}

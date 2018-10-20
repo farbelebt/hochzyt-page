@@ -1,0 +1,6 @@
+Vorname:        ***VORNAME***
+Name:           ***NAME***
+E-Mail-Adresse: ***EMAIL***
+Telefonnummer:  ***TELEFON***
+Betreff:        ***BETREFF***
+Nachricht:      ***NACHRICHT***
