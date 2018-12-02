@@ -38,6 +38,8 @@ include("kontaktformular.php");
 
 include("festprogramm.php");
 
+include("wunschliste.php");
+
 // Navigation übersteuern, null inizialisiert
 $nav_override = null;
 
@@ -87,6 +89,12 @@ switch ($_POST["do"]) {
 		exit();
 		break;
 
+	case 'wunsch_schenken';
+		html_header("Wunschliste");
+		show_navigation();
+		wunsch_schenken();
+		html_footer();
+		break;
 }
 
 // verzweigung, was wollen wir eigentlich tun mit Links?
@@ -148,13 +156,27 @@ switch ($nav_override){
 		html_footer();
 		break;
 		
-		case 'festprogramm_anzeigen';
+	case 'festprogramm_anzeigen';
 		html_header("Festprogramm");
 		show_navigation();
 		festprogramm_anzeigen();
 		html_footer();
 		break;
+
+	case 'wunschliste_anzeigen';
+		html_header("Wunschliste");
+		show_navigation();
+		wunschliste_anzeigen();
+		html_footer();
+		break;
 		
+	case 'wunsch_erfassen';
+		html_header("Wunschliste");
+		show_navigation();
+		wunsch_erfassen();
+		html_footer();
+		break;
+
 	// standard seite
 	default:
 		default_page();

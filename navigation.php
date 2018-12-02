@@ -28,6 +28,7 @@ function show_navigation() {
 	echo "<li>" . render_navigation_link("do=gaestebuch_anzeigen", "Gästebuch") . "</li>";
 	echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";
 	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "Registrierung Gäste") . "</li>";
+	echo "<li>" . render_navigation_link("do=wunschliste_anzeigen", "Wunschliste") . "</li>";
 	
 	if ($_SESSION["level"] === 0) {
 		echo "<li>" . render_navigation_link("do=admin", "Administration") . "</li>";
