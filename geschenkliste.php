@@ -161,6 +161,7 @@ function geschenkliste_danke() {
 	endif;
 }
 
+// administrative funktionen
 function geschenkliste_als_csv_herunterladen() {
 	if ($_SESSION["level"] <= 1):
 		// Alle Geschenke holen

@@ -230,6 +230,7 @@ function registrieren_formular(){
 
 // administrative funktionen
 function anmeldungen_als_csv_herunterladen() {
+	if ($_SESSION["level"] < 1):
 		// Alle Anmeldungen holen
 		$res = db( 'SELECT * FROM guest_register ORDER BY name, vorname' );
 		
@@ -251,6 +252,6 @@ function anmeldungen_als_csv_herunterladen() {
 		}
 		fclose( $fp );
 		exit;
-		
-	}
+	endif;		
+}
 ?>
