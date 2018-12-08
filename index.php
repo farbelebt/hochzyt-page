@@ -126,13 +126,6 @@ switch ($nav_override){
 		html_footer();
 		break;
 		
-	case 'registrieren_administration';
-		html_header("Gäste-Registrierung Administration");
-		show_navigation();
-		registrieren_administration();
-		html_footer();
-		break;
-		
 	case 'anmeldungen_als_csv_herunterladen':
 		anmeldungen_als_csv_herunterladen();
 		break;
@@ -162,6 +155,13 @@ switch ($nav_override){
 		html_header("Festprogramm");
 		show_navigation();
 		festprogramm_anzeigen();
+		html_footer();
+		break;
+
+	case 'festprogramm_detailliert_anzeigen';
+		html_header("Detailliertes Festprogramm");
+		show_navigation();
+		festprogramm_detailliert_anzeigen();
 		html_footer();
 		break;
 

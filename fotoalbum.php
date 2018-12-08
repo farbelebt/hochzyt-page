@@ -1,7 +1,7 @@
 <?php
 
 function fotoalbum_anzeigen(){
-	if ($_SESSION["level"] < 4):
+	if ($_SESSION["level"] <= 2):
 		echo '<content>';
 
 		fotoalbum_formular_anzeigen();
@@ -28,7 +28,7 @@ function fotoalbum_anzeigen(){
 }
 
 function fotoalbum_verarbeiten() {
-	if ($_SESSION["level"] < 4) {
+	if ($_SESSION["level"] <= 2) {
 		// Wurde ein JPG oder PNG hochgeladen?
 		if ($_FILES['bild']['type'] == 'image/jpeg' ||
 			$_FILES['bild']['type'] == 'image/png' ||
@@ -68,34 +68,33 @@ function fotoalbum_verarbeiten() {
 
 
 function fotoalbum_formular_anzeigen(){
-?>
-<h2>Hochzeits-Fotoalbum</h2>
-<br>
-<h3>Der schönste Tag von Sibylle und Stefan in Bildern.</h3>
-<p>Lade deine eigenen Fotos von unserem Anlass hoch. Für eine vergrösserte Ansicht der Fotos klicke auf ein Bild.</p>
-<br>
+	if ($_SESSION["level"] <= 2):
+		?><h2>Hochzeits-Fotoalbum</h2>
+		<br>
+		<h3>Der schönste Tag von Sibylle und Stefan in Bildern.</h3>
+		<p>Lade deine eigenen Fotos von unserem Anlass hoch. Für eine vergrösserte Ansicht der Fotos klicke auf ein Bild.</p>
+		<br>
 
-<form method="post" enctype="multipart/form-data">
-	<input type="hidden" name="do" value="fotoalbum_verarbeiten">
-	
-	<label>Datei hochladen:<br>
-		<input type="file"
-			   name="bild"
-			   accept="image/jpeg,image/png">
-	</label>	   
-	
-	<p> 
-		<button type ="submit">Hochladen</button>
-	</p>
-	</form>
-<?php
-
+		<form method="post" enctype="multipart/form-data">
+			<input type="hidden" name="do" value="fotoalbum_verarbeiten">
+			
+			<label>Datei hochladen:<br>
+				<input type="file"
+					   name="bild"
+					   accept="image/jpeg,image/png">
+			</label>	   
+			
+			<p> 
+				<button type ="submit">Hochladen</button>
+			</p>
+		</form><?php
+	endif;
 }
 
 // administrative funktionen
 function fotoalbum_administration() {
 	echo '<content>';
-	if ($_SESSION["level"] <= 2):
+	if ($_SESSION["level"] <= 1):
 		$res = db( 'SELECT * FROM photo_album ORDER BY datum DESC' );
 		?>
 
@@ -141,13 +140,13 @@ function fotoalbum_administration() {
 
 		<?php endwhile; ?>
 		</table>
-	<?php endif; ?>
-	</content>
-<?php }
+	<?php endif;
+	echo '</content>';
+}
 
 function fotoalbum_foto_loeschen() {
 	// Löschen-Rechte im Formular (Button), sowie in der db festlegen
-	if ($_SESSION["level"] <= 2) {
+	if ($_SESSION["level"] <= 1) {
 		
 		// Infos zum Datensatz holen, damit wir ggf. das Bild löschen können
 		$res = db('SELECT * FROM photo_album WHERE ID = ' . $_POST['id']);

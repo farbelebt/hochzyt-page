@@ -24,6 +24,12 @@ function show_navigation() {
 	echo "<navigation class='nav'><ul>";
 	echo "<li>" . render_navigation_link("", "Willkommen") . "</li>";
 	echo "<li>" . render_navigation_link("do=festprogramm_anzeigen", "Festprogramm") . "</li>";
+
+	# Dem Brautpaar nicht anzeigen
+	if ($_SESSION["level"] != 1 && $_SESSION["level"] <= 3) {
+		echo "<li>" . render_navigation_link("do=festprogramm_detailliert_anzeigen", "Festprogramm Detailliert") . "</li>";
+	}
+
 	echo "<li>" . render_navigation_link("do=fotoalbum_anzeigen", "Fotoalbum") . "</li>";
 	echo "<li>" . render_navigation_link("do=gaestebuch_anzeigen", "Gästebuch") . "</li>";
 	echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";

@@ -1,7 +1,7 @@
 <?php
 
 function kontaktformular_anzeigen() {
-	if ($_SESSION["level"] < 4):
+	if ($_SESSION["level"] <= 3):
 		echo '<content>';
 		kontakt_formular();
 		echo '</content>';
@@ -12,53 +12,50 @@ function kontaktformular_anzeigen() {
 
 
 function kontakt_formular(){
-	
-?>
-<h2>Kontaktformular an die Trauzeugen</h2>
-<br>
-<h3>Habt ihr Fragen zum Fest oder einen Beitrag für das Brautpaar?</h3>
-<p>Schreibt uns, und wir beantworten gerne eure Anliegen.</p>
-<br>
-<form method="post">
-<input type="hidden" name="do" value="kontaktformular_senden">
-	
-	<p>	
-	<label for="vorname">Vorname<br></label>
-	<input type="text" name="vorname" id="vorname">
-	</p>
-	<p>	
-	<label for="name">Name<br></label>
-	<input type="text" name="name" id="name">
-	</p>
-	<p>	
-	<label for="email">E-Mail-Adresse<br></label>
-	<input type="email" name="email" id="email">
-	</p>
-	<p>	
-	<label for="telefon">Telefon- oder Handynummer<br></label>
-	<input type="text" name="telefon" id="telefon">
-	</p>
-	<p>	
-	<label for="betreff">Betreff<br></label>
-	<input type="text" name="betreff" id="betreff">
-	</p>
-	<p>	
-	<label for="nachricht">Deine Nachricht<br></label>
-	<textarea type="nachricht" name="nachricht" id="nachricht" placeholder="Schreibe uns deine Nachricht ..."></textarea>
-	</p>
-	<p>	
-	<button type="submit">Abschicken</button>
-	</p>
-	<p class="klein">Deine Angaben werden vertraulich behandelt und nicht veröffentlicht.</p>
-		  
-</form>
-
-<?php
-
+	if ($_SESSION["level"] <= 3):
+		?><h2>Kontaktformular an die Trauzeugen</h2>
+		<br>
+		<h3>Habt ihr Fragen zum Fest oder einen Beitrag für das Brautpaar?</h3>
+		<p>Schreibt uns, und wir beantworten gerne eure Anliegen.</p>
+		<br>
+		<form method="post">
+		<input type="hidden" name="do" value="kontaktformular_senden">
+			
+			<p>	
+			<label for="vorname">Vorname<br></label>
+			<input type="text" name="vorname" id="vorname">
+			</p>
+			<p>	
+			<label for="name">Name<br></label>
+			<input type="text" name="name" id="name">
+			</p>
+			<p>	
+			<label for="email">E-Mail-Adresse<br></label>
+			<input type="email" name="email" id="email">
+			</p>
+			<p>	
+			<label for="telefon">Telefon- oder Handynummer<br></label>
+			<input type="text" name="telefon" id="telefon">
+			</p>
+			<p>	
+			<label for="betreff">Betreff<br></label>
+			<input type="text" name="betreff" id="betreff">
+			</p>
+			<p>	
+			<label for="nachricht">Deine Nachricht<br></label>
+			<textarea type="nachricht" name="nachricht" id="nachricht" placeholder="Schreibe uns deine Nachricht ..."></textarea>
+			</p>
+			<p>	
+			<button type="submit">Abschicken</button>
+			</p>
+			<p class="klein">Deine Angaben werden vertraulich behandelt und nicht veröffentlicht.</p>
+				  
+		</form><?php
+	endif;
 }
 
 function kontaktformular_senden(){
-	if ($_SESSION["level"] < 4) {
+	if ($_SESSION["level"] <= 3) {
 		// Fehler-Erfassung
 		$check = [
 			'vorname' => [

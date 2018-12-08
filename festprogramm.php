@@ -188,4 +188,14 @@ function festprogramm_anzeigen(){
 <?php
 }
 
+
+function festprogramm_detailliert_anzeigen(){
+  if ($_SESSION["level"] != 1 && $_SESSION["level"] <= 3):
+    ?><content class="fest_infos">
+    <h2>Detailliertes Festprogramm am 18. Mai 2019</h2>
+
+    </content><?php
+  endif;
+}
+
 ?>

@@ -1,7 +1,7 @@
 <?php
 
 function gaestebuch_anzeigen() {
-	if ($_SESSION["level"] < 4):
+	if ($_SESSION["level"] <= 3):
 		echo '<content>';
 
 		gaestebuch_formular();
@@ -32,7 +32,7 @@ function gaestebuch_anzeigen() {
 }
 
 function gaestebuch_eintrag() {
-	if ($_SESSION["level"] < 4) {
+	if ($_SESSION["level"] <= 3) {
 		// Fehler-Erfassung
 		$check = [
 			'name' => [
@@ -99,34 +99,36 @@ function gaestebuch_eintrag_loeschen() {
 }
 
 function gaestebuch_formular(){
-?>
-<h2>Gästebuch</h2>
-<br>
-<h3>Wir freuen uns über Wünsche und Feedbacks zu unserer Hochzeit.</h3>
-	<p>Für Anfragen etc. benütze bitte das <a href="?do=kontaktformular_anzeigen">Kontaktformular</a> an die Trauzeugen.</p>
-	<br>
-	
+	if ($_SESSION["level"] <= 3):
+		?>
+		<h2>Gästebuch</h2>
+		<br>
+		<h3>Wir freuen uns über Wünsche und Feedbacks zu unserer Hochzeit.</h3>
+			<p>Für Anfragen etc. benütze bitte das <a href="?do=kontaktformular_anzeigen">Kontaktformular</a> an die Trauzeugen.</p>
+			<br>
+			
 
-    <form method="post">
-	
-	<p>	
-	<label for="name">Name<br></label>
-	<input type="hidden" name="do" value="gaestebuch_eintrag">
-	<input type="text" name="name" id="name">
-	</p>
-	<p>	
-	<label for="email">E-Mail-Adresse<br></label>
-	<input type="email" name="email" id="email">
-	</p>
-	<p>	
-	<label for="nachricht">Dein Kommentar<br></label>
-	<textarea type="nachricht" name="nachricht" id="nachricht" placeholder="Schreibe hier deinen Kommentar ..."></textarea>
-	</p>
-	<p>	
-	<button type="submit">Abschicken</button>
-	</p>
-	<p class="klein">Deine E-Mail-Adresse wird nicht veröffentlicht.</p>
-		  
-</form>
-	<br>
-<?php }	?>
+		    <form method="post">
+			
+			<p>	
+			<label for="name">Name<br></label>
+			<input type="hidden" name="do" value="gaestebuch_eintrag">
+			<input type="text" name="name" id="name">
+			</p>
+			<p>	
+			<label for="email">E-Mail-Adresse<br></label>
+			<input type="email" name="email" id="email">
+			</p>
+			<p>	
+			<label for="nachricht">Dein Kommentar<br></label>
+			<textarea type="nachricht" name="nachricht" id="nachricht" placeholder="Schreibe hier deinen Kommentar ..."></textarea>
+			</p>
+			<p>	
+			<button type="submit">Abschicken</button>
+			</p>
+			<p class="klein">Deine E-Mail-Adresse wird nicht veröffentlicht.</p>
+				  
+		</form>
+		<br><?php
+	endif;
+}	?>
