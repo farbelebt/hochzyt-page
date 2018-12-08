@@ -38,6 +38,8 @@ include("kontaktformular.php");
 
 include("festprogramm.php");
 
+include("geschenkliste.php");
+
 // Navigation übersteuern, null inizialisiert
 $nav_override = null;
 
@@ -87,6 +89,14 @@ switch ($_POST["do"]) {
 		exit();
 		break;
 
+	case 'geschenkliste_schenken4';
+		html_header("Schenken");
+		if (geschenkliste_schenken4()) {
+			$nav_override = 'geschenkliste_danke';
+		} else {
+			$nav_override = 'geschenkliste_erfassen';
+		}
+		break;
 }
 
 // verzweigung, was wollen wir eigentlich tun mit Links?
@@ -123,7 +133,7 @@ switch ($nav_override){
 		html_footer();
 		break;
 		
-	case 'csv':
+	case 'anmeldungen_als_csv_herunterladen':
 		anmeldungen_als_csv_herunterladen();
 		break;
 		
@@ -148,11 +158,36 @@ switch ($nav_override){
 		html_footer();
 		break;
 		
-		case 'festprogramm_anzeigen';
+	case 'festprogramm_anzeigen';
 		html_header("Festprogramm");
 		show_navigation();
 		festprogramm_anzeigen();
 		html_footer();
+		break;
+
+	case 'geschenkliste_anzeigen';
+		html_header("Schenken");
+		show_navigation();
+		geschenkliste_anzeigen();
+		html_footer();
+		break;
+		
+	case 'geschenkliste_erfassen';
+		html_header("Schenken");
+		show_navigation();
+		geschenkliste_erfassen();
+		html_footer();
+		break;
+
+	case 'geschenkliste_danke';
+		html_header("Schenken");
+		show_navigation();
+		geschenkliste_danke();
+		html_footer();
+		break;
+
+	case 'geschenkliste_als_csv_herunterladen':
+		geschenkliste_als_csv_herunterladen();
 		break;
 		
 	// standard seite

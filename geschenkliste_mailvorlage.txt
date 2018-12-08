@@ -1,0 +1,5 @@
+Name:           ***NAME***
+E-Mail-Adresse: ***EMAIL***
+Nachricht:      ***NACHRICHT***
+IBAN:           ***IBAN***
+Betrag:         CHF ***BETRAG***

@@ -28,6 +28,7 @@ function show_navigation() {
 	echo "<li>" . render_navigation_link("do=gaestebuch_anzeigen", "Gästebuch") . "</li>";
 	echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";
 	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "Registrierung Gäste") . "</li>";
+	echo "<li>" . render_navigation_link("do=geschenkliste_anzeigen", "Schenken") . "</li>";
 	
 	if ($_SESSION["level"] === 0) {
 		echo "<li>" . render_navigation_link("do=admin", "Administration") . "</li>";
@@ -40,7 +41,9 @@ function show_admin_navigation() { ?>
 	<content>
 		<p><a href="?do=fotoalbum_administration"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Manager Fotoalbum</a></p>
 
-		<p><a href="?do=registrieren_administration"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Gästeliste</a></p>
+		<p><a href="?do=anmeldungen_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Gästeliste</a></p>
+
+		<p><a href="?do=geschenkliste_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Geschenkliste</a></p>
 	
 	</content>
 
