@@ -158,6 +158,13 @@ switch ($nav_override){
 		html_footer();
 		break;
 
+	case 'festprogramm_detailliert_anzeigen';
+		html_header("Detailliertes Festprogramm");
+		show_navigation();
+		festprogramm_detailliert_anzeigen();
+		html_footer();
+		break;
+
 	case 'geschenkliste_anzeigen';
 		html_header("Schenken");
 		show_navigation();
