@@ -3,13 +3,16 @@
 function geschenkliste_anzeigen() {
 	if ($_SESSION["level"] < 4):
 		echo '<content>';
-		echo '<h3>Wähle den Betrag, den du schenken möchtest.</h3>';
 
 		echo "<h2>Schenken</h2>";
-		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=50"><img src="bilder/wine.jpg" alt="CHF 50" width=300 height=300></a></div>';
-		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=100"><img src="bilder/wine.jpg" alt="CHF 100" width=300 height=300></a></div>';
-		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=150"><img src="bilder/wine.jpg" alt="CHF 150" width=300 height=300></a></div>';
-		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=0"><img src="bilder/wine.jpg" alt="Freier Betrag" width=300 height=300></a></div>';
+		echo '<br>';
+		echo '<h3>Wir freuen uns über jeden finanziellen Zustupf für unser zukünftiges Zuhause.</h3>';
+		echo '<p>Wähle den Betrag, den du schenken möchtest und klicke auf das entsprechende Symbol.</p>';
+		echo '<br>';
+		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=50"><img src="bilder/symbol_betrag_50fr.png" alt="CHF 50" width=250 height=250></a></div>';
+		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=100"><img src="bilder/symbol_betrag_100fr.png" alt="CHF 100" width=250 height=250></a></div>';
+		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=150"><img src="bilder/symbol_betrag_150fr.png" alt="CHF 150" width=250 height=250></a></div>';
+		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=0"><img src="bilder/symbol_betrag_fr_frei.png" alt="Freier Betrag" width=250 height=250></a></div>';
 
 		echo '</content>';
 	else:
