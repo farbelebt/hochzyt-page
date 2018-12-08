@@ -28,7 +28,7 @@ function fotoalbum_anzeigen(){
 }
 
 function fotoalbum_verarbeiten() {
-	if ($_SESSION["level"] <= 2):
+	if ($_SESSION["level"] <= 2) {
 		// Wurde ein JPG oder PNG hochgeladen?
 		if ($_FILES['bild']['type'] == 'image/jpeg' ||
 			$_FILES['bild']['type'] == 'image/png' ||
