@@ -18,38 +18,40 @@ function geschenkliste_anzeigen() {
 }
 
 function geschenkliste_erfassen() {
+	if ($_SESSION["level"] < 4):
 
-$randomId = rand(1000,9999);
+		$randomId = rand(1000,9999);
 
-?><content>
-<h2>Schenken</h2>
-<form method="post">
+		?><content>
+		<h2>Schenken</h2>
+		<form method="post">
 
-	<p>	
-	<label for="name">Name<br></label>
-	<input type="hidden" name="do" value="geschenkliste_schenken4">
-	<input type="hidden" name="randomId" value="<?php echo $randomId; ?>">
-	<input type="text" name="name" id="name">
-	</p>
-	<p>	
-	<label for="email">E-Mail-Adresse<br></label>
-	<input type="email" name="email" id="email">
-	</p>
-	<p>	
-	<label for="amount">Betrag in CHF<br></label>
-	<input type="text" name="amount" id="amount" value="<?php echo $_GET["amount"]; ?>">
-	</p>
-	<p>	
-	<label for="message">Deine Mitteilung<br></label>
-	<textarea type="text" name="message" id="message" placeholder="Schreibe hier deinen Kommentar ..."></textarea>
-	</p>
-	<p>	
-	<button type="submit">Schenken</button>
-	</p>
-		  
-</form>
-</content>
-<?php }
+			<p>	
+			<label for="name">Name<br></label>
+			<input type="hidden" name="do" value="geschenkliste_schenken4">
+			<input type="hidden" name="randomId" value="<?php echo $randomId; ?>">
+			<input type="text" name="name" id="name">
+			</p>
+			<p>	
+			<label for="email">E-Mail-Adresse<br></label>
+			<input type="email" name="email" id="email">
+			</p>
+			<p>	
+			<label for="amount">Betrag in CHF<br></label>
+			<input type="text" name="amount" id="amount" value="<?php echo $_GET["amount"]; ?>">
+			</p>
+			<p>	
+			<label for="message">Deine Mitteilung<br></label>
+			<textarea type="text" name="message" id="message" placeholder="Schreibe hier deinen Kommentar ..."></textarea>
+			</p>
+			<p>	
+			<button type="submit">Schenken</button>
+			</p>
+				  
+		</form>
+		</content><?php
+	endif;
+}
 
 function geschenkliste_schenken4() {
 	if ($_SESSION["level"] < 4) {
@@ -148,16 +150,19 @@ function geschenkliste_schenken4() {
 }
 
 function geschenkliste_danke() {
-	?><content>
-	<h2>Schenken</h2>
-	Bitte tätige eine Überweisung an die IBAN: <strong><?php echo IBAN; ?></strong><br />
-	Wichtig ist, dass du bei der Bemerkung die Zahl <strong><?php echo $_POST[ 'randomId' ]; ?></strong> eingibst.<br />
-	<br />
-	Diese Angaben werden zusätzlich an die angegebene E-Mailadresse versendet, falls die Zahlung später erfolgen wird.
-	</content>
-<?php }
+	if ($_SESSION["level"] < 4):
+		?><content>
+		<h2>Schenken</h2>
+		Bitte tätige eine Überweisung an die IBAN: <strong><?php echo IBAN; ?></strong><br />
+		Wichtig ist, dass du bei der Bemerkung die Zahl <strong><?php echo $_POST[ 'randomId' ]; ?></strong> eingibst.<br />
+		<br />
+		Diese Angaben werden zusätzlich an die angegebene E-Mailadresse versendet, falls die Zahlung später erfolgen wird.
+		</content><?php
+	endif;
+}
 
 function geschenkliste_als_csv_herunterladen() {
+	if ($_SESSION["level"] <= 1):
 		// Alle Geschenke holen
 		$res = db( 'SELECT * FROM gift ORDER BY name' );
 		
@@ -179,8 +184,8 @@ function geschenkliste_als_csv_herunterladen() {
 		}
 		fclose( $fp );
 		exit;
-		
-	}
+	endif;
+}
 
 
 ?>
