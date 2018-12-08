@@ -100,6 +100,44 @@ function geschenkliste_schenken4() {
 			$res = db ($sql);
 
 			meldung_erfassen("Vielen Dank für deinen Beitrag.");
+
+			// HTML-Inhalt für die E-Mail vorbereiten
+			$html = file_get_contents('geschenkliste_mailvorlage.html');
+
+			// In der Variable $html die Platzhalter suchen und ersetzen
+			$html = str_replace('***NAME***', $name, $html);
+			$html = str_replace('***EMAIL***', $email, $html);
+			$html = str_replace('***NACHRICHT***', $message, $html);
+			$html = str_replace('***IBAN***', IBAN, $html);
+			$html = str_replace('***BETRAG***', $amount, $html);
+
+			// TEXT-Inhalt für die E-Mail vorbereiten
+			$txt = file_get_contents('geschenkliste_mailvorlage.txt');
+
+			// In der Variable $html die Platzhalter suchen und ersetzen
+			$txt = str_replace('***NAME***', $name, $txt);
+			$txt = str_replace('***EMAIL***', $email, $txt);
+			$txt = str_replace('***NACHRICHT***', $message, $txt);
+			$txt = str_replace('***IBAN***', IBAN, $txt);
+			$txt = str_replace('***BETRAG***', $amount, $txt);
+
+			include 'classes/PHPMailerAutoload.php';
+
+			$notification = new PHPMailer();
+			$notification ->FromName = CONTACT_FROM_NAME;
+			$notification ->From = CONTACT_EMAIL;
+			$notification ->Subject = "Angaben Hochzeitsgeschenk";
+			$notification ->IsHTML (TRUE);
+			$notification ->Body = $html;
+			$notification ->AltBody = $txt;
+			$notification ->AddAddress($email, $name);
+
+			if ($notification ->Send()) {
+				meldung_erfassen("Nachricht verschickt.");
+			} else {
+				meldung_erfassen("Nachricht konnte NICHT verschickt werden.", "fehler");
+			}
+
 			return TRUE;
 
 		} else {
