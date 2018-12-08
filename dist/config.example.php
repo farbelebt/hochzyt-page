@@ -14,6 +14,7 @@ define ( 'ADMIN_NAME', 'Your name' );
 define ( 'CONTACT_EMAIL', 'donotreply@yourdomain.tld' );
 define ( 'CONTACT_FROM_NAME', 'Hochzeit von Braut und Bräutigam' );
 define ( 'CONTACT_SUBJECT', 'Betreff der Mail' );
+define ( 'IBAN', 'CH 00 000 0000 0000' );
 
 
 // Google Maps

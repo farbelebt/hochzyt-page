@@ -38,7 +38,7 @@ include("kontaktformular.php");
 
 include("festprogramm.php");
 
-include("wunschliste.php");
+include("geschenkliste.php");
 
 // Navigation übersteuern, null inizialisiert
 $nav_override = null;
@@ -89,11 +89,13 @@ switch ($_POST["do"]) {
 		exit();
 		break;
 
-	case 'wunsch_schenken';
-		html_header("Wunschliste");
-		show_navigation();
-		wunsch_schenken();
-		html_footer();
+	case 'geschenkliste_schenken4';
+		html_header("Schenken");
+		if (geschenkliste_schenken4()) {
+			$nav_override = 'geschenkliste_danke';
+		} else {
+			$nav_override = 'geschenkliste_erfassen';
+		}
 		break;
 }
 
@@ -131,7 +133,7 @@ switch ($nav_override){
 		html_footer();
 		break;
 		
-	case 'csv':
+	case 'anmeldungen_als_csv_herunterladen':
 		anmeldungen_als_csv_herunterladen();
 		break;
 		
@@ -163,20 +165,31 @@ switch ($nav_override){
 		html_footer();
 		break;
 
-	case 'wunschliste_anzeigen';
-		html_header("Wunschliste");
+	case 'geschenkliste_anzeigen';
+		html_header("Schenken");
 		show_navigation();
-		wunschliste_anzeigen();
+		geschenkliste_anzeigen();
 		html_footer();
 		break;
 		
-	case 'wunsch_erfassen';
-		html_header("Wunschliste");
+	case 'geschenkliste_erfassen';
+		html_header("Schenken");
 		show_navigation();
-		wunsch_erfassen();
+		geschenkliste_erfassen();
 		html_footer();
 		break;
 
+	case 'geschenkliste_danke';
+		html_header("Schenken");
+		show_navigation();
+		geschenkliste_danke();
+		html_footer();
+		break;
+
+	case 'geschenkliste_als_csv_herunterladen':
+		geschenkliste_als_csv_herunterladen();
+		break;
+		
 	// standard seite
 	default:
 		default_page();
