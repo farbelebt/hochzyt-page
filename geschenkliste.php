@@ -2,10 +2,10 @@
 
 function geschenkliste_anzeigen() {
 	if ($_SESSION["level"] < 4):
-		echo "<h2>Schenken</h2>";
-
 		echo '<content>';
+		echo '<h3>Wähle den Betrag, den du schenken möchtest.</h3>';
 
+		echo "<h2>Schenken</h2>";
 		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=50"><img src="bilder/wine.jpg" alt="CHF 50" width=300 height=300></a></div>';
 		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=100"><img src="bilder/wine.jpg" alt="CHF 100" width=300 height=300></a></div>';
 		echo '<div style="float: left; margin: 5px;"><a href="?do=geschenkliste_erfassen&amount=150"><img src="bilder/wine.jpg" alt="CHF 150" width=300 height=300></a></div>';
