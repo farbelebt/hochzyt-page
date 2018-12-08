@@ -32,7 +32,7 @@ function gaestebuch_anzeigen() {
 }
 
 function gaestebuch_eintrag() {
-	if ($_SESSION["level"] <= 3):
+	if ($_SESSION["level"] <= 3) {
 		// Fehler-Erfassung
 		$check = [
 			'name' => [
