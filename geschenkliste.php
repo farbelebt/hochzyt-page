@@ -53,7 +53,7 @@ function geschenkliste_erfassen() {
 	endif;
 }
 
-function geschenkliste_schenken4() {
+function geschenkliste_schenken() {
 	if ($_SESSION["level"] < 4) {
 		// Fehler-Erfassung
 		$check = [
