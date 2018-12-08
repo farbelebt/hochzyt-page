@@ -1,7 +1,7 @@
 <?php
 
 function gaestebuch_anzeigen() {
-	if ($_SESSION["level"] < 4):
+	if ($_SESSION["level"] <= 3):
 		echo '<content>';
 
 		gaestebuch_formular();
@@ -32,7 +32,7 @@ function gaestebuch_anzeigen() {
 }
 
 function gaestebuch_eintrag() {
-	if ($_SESSION["level"] < 4) {
+	if ($_SESSION["level"] <= 3):
 		// Fehler-Erfassung
 		$check = [
 			'name' => [
@@ -99,7 +99,7 @@ function gaestebuch_eintrag_loeschen() {
 }
 
 function gaestebuch_formular(){
-	if ($_SESSION["level"] < 4):
+	if ($_SESSION["level"] <= 3):
 		?>
 		<h2>Gästebuch</h2>
 		<br>
