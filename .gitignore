@@ -8,3 +8,8 @@ _notes/
 config.php
 uploads/*
 .htaccess
+
+bilder/symbol_betrag_100fr.png
+bilder/symbol_betrag_50fr.png
+bilder/symbol_betrag_150fr.png
+bilder/symbol_betrag_fr_frei.png
