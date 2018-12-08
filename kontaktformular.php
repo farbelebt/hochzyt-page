@@ -55,7 +55,7 @@ function kontakt_formular(){
 }
 
 function kontaktformular_senden(){
-	if ($_SESSION["level"] <= 3):
+	if ($_SESSION["level"] <= 3) {
 		// Fehler-Erfassung
 		$check = [
 			'vorname' => [
