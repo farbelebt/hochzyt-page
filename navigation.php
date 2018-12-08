@@ -29,6 +29,10 @@ function show_navigation() {
 	echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";
 	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "Registrierung Gäste") . "</li>";
 	echo "<li>" . render_navigation_link("do=geschenkliste_anzeigen", "Schenken") . "</li>";
+
+	if ($_SESSION["level"] <= 3) {
+
+	}
 	
 	if ($_SESSION["level"] === 0) {
 		echo "<li>" . render_navigation_link("do=admin", "Administration") . "</li>";
