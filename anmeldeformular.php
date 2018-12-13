@@ -14,7 +14,7 @@ function registrierung_anzeigen() {
 		registrieren_formular();
 		echo '</content>';
 	else:
-		anmeldung_erforderlich();
+		login_required();
 	endif;
 }
 
