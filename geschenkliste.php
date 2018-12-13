@@ -28,7 +28,7 @@ function geschenkliste_erfassen() {
 
 			<p>	
 			<label for="name">Name<br></label>
-			<input type="hidden" name="do" value="geschenkliste_schenken4">
+			<input type="hidden" name="do" value="geschenkliste_schenken">
 			<input type="hidden" name="randomId" value="<?php echo $randomId; ?>">
 			<input type="text" name="name" id="name">
 			</p>

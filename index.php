@@ -91,7 +91,7 @@ switch ($_POST["do"]) {
 
 	case 'geschenkliste_schenken';
 		html_header("Schenken");
-		if (geschenkliste_schenken4()) {
+		if (geschenkliste_schenken()) {
 			$nav_override = 'geschenkliste_danke';
 		} else {
 			$nav_override = 'geschenkliste_erfassen';
