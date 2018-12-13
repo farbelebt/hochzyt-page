@@ -46,15 +46,17 @@ function show_navigation() {
 	echo "</ul></navigation>";
 }
 
-function show_admin_navigation() { ?>
-	<content>
-		<p><a href="?do=fotoalbum_administration"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Manager Fotoalbum</a></p>
+function show_admin_navigation() {
+	if ($_SESSION["level"] <= 1) { ?>
+		<content>
+			<p><a href="?do=fotoalbum_administration"><i class="far fa-arrow-alt-circle-right"></i>Manager Fotoalbum</a></p>
 
-		<p><a href="?do=anmeldungen_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Gästeliste</a></p>
+			<p><a href="?do=anmeldungen_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>Download Gästeliste</a></p>
 
-		<p><a href="?do=geschenkliste_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Geschenkliste</a></p>
-	
-	</content>
+			<p><a href="?do=geschenkliste_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>Download Geschenkliste</a></p>
+		
+		</content>
 
 <?php }
+ }
 ?>
