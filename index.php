@@ -89,7 +89,7 @@ switch ($_POST["do"]) {
 		exit();
 		break;
 
-	case 'geschenkliste_schenken4';
+	case 'geschenkliste_schenken';
 		html_header("Schenken");
 		if (geschenkliste_schenken4()) {
 			$nav_override = 'geschenkliste_danke';
