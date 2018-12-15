@@ -5,20 +5,20 @@ function login($login, $password) {
 		if (strtolower($user["login"]) == strtolower($login)) {
 			
 			if (password_verify($password, $user["password"])) {
-				// korrekte benutzer anmeldung, speichern in die SESSION
+				// korrektes benutzer login, speichern in die SESSION
 				$_SESSION["login"] = $user["login"];
 				$_SESSION["level"] = $user["level"];
 				$_SESSION["userid"] = get_userid($user["login"]);
 				$_SESSION["displayname"] = $user["displayname"];
 
-				meldung_erfassen("Anmeldung erfolgreich!");
+				meldung_erfassen("Login erfolgreich!");
 
 				return true; // bricht das foreach ab
 			}
 		}
 	}
 
-	meldung_erfassen("Anmeldung nicht erfolgreich!", "fehler");
+	meldung_erfassen("Login nicht erfolgreich!", "fehler");
 }
 
 function logout() {

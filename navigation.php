@@ -23,35 +23,36 @@ function show_navigation() {
 
 	echo "<navigation class='nav'><ul>";
 	echo "<li>" . render_navigation_link("", "Willkommen") . "</li>";
-	echo "<li>" . render_navigation_link("do=festprogramm_anzeigen", "Festprogramm") . "</li>";
 
-	# Dem Brautpaar nicht anzeigen
-	if ($_SESSION["level"] != 1 && $_SESSION["level"] <= 3) {
-		echo "<li>" . render_navigation_link("do=festprogramm_detailliert_anzeigen", "Festprogramm Detailliert") . "</li>";
+	if ($_SESSION["level"] <= 1 || $_SESSION["level"] === 99) {
+			echo "<li>" . render_navigation_link("do=festprogramm_anzeigen", "Programm") . "</li>";
+	}
+	if ($_SESSION["level"] <= 2) {
+		echo "<li>" . render_navigation_link("do=festprogramm_detailliert_anzeigen", "Detailprogramm") . "</li>";
 	}
 
-	echo "<li>" . render_navigation_link("do=fotoalbum_anzeigen", "Fotoalbum") . "</li>";
-	echo "<li>" . render_navigation_link("do=gaestebuch_anzeigen", "Gästebuch") . "</li>";
-	echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";
-	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "Registrierung Gäste") . "</li>";
-	echo "<li>" . render_navigation_link("do=geschenkliste_anzeigen", "Schenken") . "</li>";
+	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "An- & Abmeldung") . "</li>";
+	if ($_SESSION["level"] <= 3) {
+		echo "<li>" . render_navigation_link("do=geschenkliste_anzeigen", "Schenken") . "</li>";
+		echo "<li>" . render_navigation_link("do=fotoalbum_anzeigen", "Fotos") . "</li>";
+		echo "<li>" . render_navigation_link("do=gaestebuch_anzeigen", "Gästebuch") . "</li>";
+		echo "<li>" . render_navigation_link("do=kontaktformular_anzeigen", "Kontakt") . "</li>";
+	}
 	
-	if ($_SESSION["level"] === 0) {
-		echo "<li>" . render_navigation_link("do=admin", "Administration") . "</li>";
+	if ($_SESSION["level"] <= 1) {
+		echo "<li>" . render_navigation_link("do=admin", "Admin") . "</li>";
 	}
 
 	echo "</ul></navigation>";
 }
 
-function show_admin_navigation() { ?>
-	<content>
-		<p><a href="?do=fotoalbum_administration"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Manager Fotoalbum</a></p>
-
-		<p><a href="?do=anmeldungen_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Gästeliste</a></p>
-
-		<p><a href="?do=geschenkliste_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Download Geschenkliste</a></p>
-	
-	</content>
-
+function show_admin_navigation() {
+	if ($_SESSION["level"] <= 1) { ?>
+		<content>
+			<p><a href="?do=fotoalbum_administration"><i class="far fa-arrow-alt-circle-right"></i>Manager Fotoalbum</a></p>
+			<p><a href="?do=anmeldungen_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>Download Gästeliste</a></p>
+			<p><a href="?do=geschenkliste_als_csv_herunterladen"><i class="far fa-arrow-alt-circle-right"></i>Download Geschenkliste</a></p>
+		</content>
 <?php }
+ }
 ?>

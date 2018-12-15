@@ -23,7 +23,7 @@ function fotoalbum_anzeigen(){
 
 		echo '</content>';
 	else:
-		anmeldung_erforderlich();
+		login_required();
 	endif;
 }
 

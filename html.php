@@ -71,9 +71,9 @@ function html_footer() { ?>
 	</html>
 <?php } 
 
-function anmeldung_erforderlich() { ?>
+function login_required() { ?>
 	<content>
-	<h2>Du bist nicht angemeldet!</h2>
+	<h2>Du bist nicht eingeloggt!</h2>
 	<br>
 	<p>Um diesen Inhalt zu sehen, musst du dich einloggen.</p>
 	</content>
