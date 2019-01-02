@@ -31,19 +31,7 @@ function registrieren_eintrag() {
 				'falsch' => strlen( $_POST[ 'name' ] ) < 3,
 				'meldung' => 'Bitte trage ein Nachname ein'
 			],
-			'strasse' => [
-				'falsch' => strlen( $_POST[ 'strasse' ] ) < 3,
-				'meldung' => 'Bitte trage eine Strasse ein'
-			],
-			'postleitzahl' => [
-				'falsch' => strlen( $_POST[ 'postleitzahl' ] ) < 4,
-				'meldung' => 'Bitte trage eine gültige Postleitzahl ein'
-			],
-			'ort' => [
-				'falsch' => strlen( $_POST[ 'ort' ] ) < 3,
-				'meldung' => 'Bitte trage eine Ortschaft ein'
-			],
-			'email' => [
+-			'email' => [
 				'falsch' => ! filter_var( $_POST[ 'email' ], FILTER_VALIDATE_EMAIL ),
 				'meldung' => 'Bitte trage eine korrekte E-Mail-Adresse ein'
 			],
@@ -66,9 +54,6 @@ function registrieren_eintrag() {
 			$vorname = filter_input( INPUT_POST, 'vorname', FILTER_SANITIZE_STRING );
 			$name = filter_input( INPUT_POST, 'name', FILTER_SANITIZE_STRING );
 			$firma_verein = filter_input( INPUT_POST, 'firma_verein', FILTER_SANITIZE_STRING );
-			$strasse = filter_input( INPUT_POST, 'strasse', FILTER_SANITIZE_STRING );
-			$postleitzahl = filter_input( INPUT_POST, 'postleitzahl', FILTER_SANITIZE_NUMBER_INT );
-			$ort = filter_input( INPUT_POST, 'ort', FILTER_SANITIZE_STRING );
 			$email = filter_input( INPUT_POST, 'email', FILTER_VALIDATE_EMAIL );
 			$bemerkung = filter_input( INPUT_POST, 'bemerkung', FILTER_SANITIZE_STRING );
 
@@ -81,25 +66,15 @@ function registrieren_eintrag() {
 			}
 
 			$sql = 'INSERT INTO
-						guest_register (teilnahme, anrede, vorname, name, firma_verein, strasse, postleitzahl, ort, email, erw_apero, erw_fleisch, erw_vegetarisch, erw_kleineportion, kind_apero, kind_fleisch, kind_vegetarisch, kind_kleineportion, bemerkung)
+						guest_register (teilnahme, vorname, name, firma_verein, email, anz_erwachsene, anz_kinder, bemerkung)
 					VALUES (
 					"' . $teilnahme . '",
-					"' . $_POST['anrede'] . '",
 					"' . $vorname . '",
 					"' . $name . '",
 					"' . $firma_verein . '",
-					"' . $strasse . '",
-					"' . $postleitzahl . '",
-					"' . $ort . '",
 					"' . $email . '",
-					"' . $_POST['erw_apero'] . '",
-					"' . $_POST['erw_fleisch'] . '",
-					"' . $_POST['erw_vegetarisch'] . '",
-					"' . $_POST['erw_kleineportion'] . '",
-					"' . $_POST['kind_apero'] . '",
-					"' . $_POST['kind_fleisch'] . '",
-					"' . $_POST['kind_vegetarisch'] . '",
-					"' . $_POST['kind_kleineportion'] . '",
+					"' . $_POST['anz_erwachsene'] . '",
+					"' . $_POST['anz_kinder'] . '",
 					"' . $bemerkung . '"
 					)';
 
@@ -122,102 +97,82 @@ function registrieren_formular(){
 		<br>
 		<form method="post">
 		<script type="text/javascript" language="javascript">
-		 function toggleVisibility(cb)
+		 function showForm(cb)
 		 {
 		  var x = document.getElementById("teilnehmer");
-		  if(cb.checked==true)
 		   x.style.display = "block";
-		  else
+		 }
+
+		 function hideForm(cb)
+		 {
+		  var x = document.getElementById("teilnehmer");
 		   x.style.display = "none";
 		 }
 		</script>
 			<input type="hidden" name="do" value="registrieren_eintrag">
-			<p><input type="checkbox" style="width: auto;" checked="checked" onClick="toggleVisibility(this)" name="teilnahme" value="ja" /> Ja, ich/wir nehmen gerne teil.</p>
-			<br>
-			<table id="teilnehmer">
-				<tr><td colspan="3">Bitte hier die Gesamtanzahl der Personen, entsprechend der Menüauswahl, eintragen. Wichtig: Die Teilnahme an Apéro und/oder Fest separat eintragen.</td></tr>
-				<tr>
-					<th>Erwachsene</th>
-					<th>Kinder</th>
-					<th>Menuwahl</th>
-				</tr>
-				<tr>
-					<td><?php dropdown_anzahl("erw_apero"); ?></td>
-					<td><?php dropdown_anzahl("kind_apero"); ?></td>
-					<td>nehmen am Apéro teil.</td>
-				</tr>
 			<?php if ($_SESSION["level"] <= 2): ?>
-				<tr>
-					<td><?php dropdown_anzahl("erw_fleisch"); ?></td>
-					<td><?php dropdown_anzahl("kind_fleisch"); ?></td>
-					<td>essen das Menu mit Fleisch.</td>
-				</tr>
-				<tr>
-					<td><?php dropdown_anzahl("erw_vegetarisch"); ?></td>
-					<td><?php dropdown_anzahl("kind_vegetarisch"); ?></td>
-					<td>essen das vegetarische Menu.</td>
-				</tr>
-				<tr>
-					<td><?php dropdown_anzahl("erw_kleineportion"); ?></td>
-					<td><?php dropdown_anzahl("kind_kleineportion"); ?></td>
-					<td>essen eine kleine Portion.</td>
-				</tr>
+				<p><input type="radio" style="width: auto;" checked onClick="showForm(this)" name="teilnahme" value="ja" /> Ja, ich/wir nehmen gerne teil.</p>
+				<p><input type="radio" style="width: auto;" onClick="hideForm(this)" name="teilnahme" value="nein" /> Nein, ich/wir nehmen NICHT teil.</p>
 			<?php else: ?>
-				<input type="hidden" name="erw_fleisch" value="0">
-				<input type="hidden" name="kind_fleisch" value="0">
-				<input type="hidden" name="erw_vegetarisch" value="0">
-				<input type="hidden" name="kind_vegetarisch" value="0">
-				<input type="hidden" name="erw_kleineportion" value="0">
-				<input type="hidden" name="kind_kleineportion" value="0">
+				<p><input type="radio" style="width: auto;" checked onClick="showForm(this)" name="teilnahme" value="ja" /> Anmeldung JA</p>
+				<p><input type="radio" style="width: auto;" onClick="hideForm(this)" name="teilnahme" value="nein" /> Anmeldung NEIN</p>
 			<?php endif; ?>
-			</table>
+			<br>
 
-			<p>Anrede</p>
-			<p>
-				<select name="anrede">
-					<option value="Frau">Frau</option>
-		  			<option value="Herr">Herr</option>
-		  			<option value="Familie">Familie</option>
-		 			<option value="Firma">Firma</option>
-					<option value="Verein">Verein</option>
-				</select> 
-			</p>
-			
 			<p>	
 			<label for="vorname">Vorname<br></label>
 			<input type="text" name="vorname" id="vorname">
 			</p>
 			<p>	
-			<label for="name">Nachname<br></label>
+			<label for="name">Name<br></label>
 			<input type="text" name="name" id="name">
 			</p>
-			<p>	
-			<p>	
-			<label for="firma_verein">Firma/Verein<br></label>
-			<input type="text" name="firma_verein" id="firma_verein">
-			</p>
-			<p>	
-			<label for="strasse">Strasse/Nr.<br></label>
-			<input type="text" name="strasse" id="strasse">
-			</p>
-			<p>	
-			<label for="postleitzahl">Postleitzahl<br></label>
-			<input type="text" name="postleitzahl" id="postleitzahl">
-			</p>
-			<p>	
-			<label for="ort">Ort<br></label>
-			<input type="text" name="ort" id="ort">
-			</p>
+
+			<?php if ($_SESSION["level"] <= 2): ?>
+				<input type="hidden" name="firma_verein" value="">
+			<?php else: ?>
+				<p>	
+				<label for="firma_verein">Firma/Verein<br></label>
+				<input type="text" name="firma_verein" id="firma_verein">
+				</p>
+			<?php endif; ?>
+
 			<p>	
 			<label for="email">E-Mail<br></label>
 			<input type="email" name="email" id="email">
 			</p>	
 
-			<p>	
-			<label for="bemerkung"></label>
-			<textarea type="text" name="bemerkung" id="bemerkung" placeholder="Zusätzliche Bemerkungen zu Allergien/Unverträglichkeiten oder Sonstiges ..."></textarea>
-			</p>
-			
+			<div id="teilnehmer">
+			<?php if ($_SESSION["level"] <= 2): ?>
+				<p>	
+				<label for="anz_erwachsene">Anzahl Erwachsene<br></label>
+				<?php dropdown_anzahl("anz_erwachsene", 10); ?>
+				</p>
+
+				<p>	
+				<label for="anz_kinder">Anzahl Kinder<br></label>
+				<?php dropdown_anzahl("anz_kinder", 10); ?>
+				</p>
+
+				<p>	
+				<label for="bemerkung"></label>
+				<textarea type="text" name="bemerkung" id="bemerkung" placeholder="Zusätzliche Bemerkungen zu Allergien/Unverträglichkeiten oder Sonstiges ..."></textarea>
+				</p>
+			<?php else: ?>
+				<p>	
+				<label for="anz_erwachsene">Anzahl Erwachsene<br></label>
+				<?php dropdown_anzahl("anz_erwachsene"); ?>
+				</p>
+
+				<p>	
+				<label for="anz_kinder">Anzahl Kinder<br></label>
+				<?php dropdown_anzahl("anz_kinder"); ?>
+				</p>
+
+				<input type="hidden" name="bemerkung" value="">
+			<?php endif; ?>
+			</div>
+
 			<p>	
 			<button type="submit">Abschicken</button>
 			</p>
