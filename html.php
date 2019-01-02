@@ -24,8 +24,16 @@ function html_header($titel = "") {
 	<body>
 		
 	<logo>
-	<div class="heading_text"><img src="bilder/herz.png" alt="Baumherz" class="herzlogo"></div>	
+	<div>
+		<img src="bilder/kopfzeile_paartext_wir-01.svg" alt="Wir" height="200" width="700" class="paartext-1">
+		<img src="bilder/kopfzeile_paartext_namen-01.svg" alt="Sibylle&Stefan" height="200" width="700" class="paartext-2">
+	<!--<img src="bilder/kopfzeile_paartext_wir.png" class="paartext-1" > <img src="bilder/kopfzeile_paartext_namen.png" class="paartext-2">-->
+	</div>	
 	</logo>
+		
+	<date>
+	<div> <img src="bilder/schiefertafel_datum_frei.png" alt="Schiefertafel" class="datumtafel"></div>	
+	</date>
 
 	<aside>
 	<div>
@@ -40,25 +48,46 @@ function html_header($titel = "") {
 function welcome_page() { ?>
 	<content>
 	
-	<div>
-	<h1>Herzlich willkommen auf unserer Hochzeits-Website</h1>
-	</div>
-	
-	<div>
-	<img src="bilder/Depositphotos_121292774_web.jpg" alt="Paarbild" class="welcome_image">
-	</div>
-	
+	<div><h1>Herzlich willkommen auf unserer Hochzeits-Website</h1></div>
+		
+	<div><img src="bilder/paar_foto_1.jpg" alt="Paar" class="welcome_image" id="slideshow"></div>
+	   
+		<script>
+		   function changeImage()
+    {
+        var img = document.getElementById("slideshow");
+        img.src = bilder[x];
+        x++;
+
+        if(x >= bilder.length){
+            x = 0;
+        } 
+
+        setTimeout("changeImage()", 5000);
+    }
+
+    x = 1;
+
+     var bilder = ["bilder/paar_foto_1.jpg",
+				   "bilder/paar_foto_2.jpg",
+                   "bilder/paar_foto_3.jpg",
+                   "bilder/paar_foto_4.jpg",
+				   "bilder/paar_foto_5.jpg",
+				   "bilder/paar_foto_6.jpg",
+				   "bilder/paar_foto_7.jpg"];
+			
+	 setTimeout("changeImage()", 5000);
+			
+		</script>
+		
 	</content>
 <?php } 
 
 function html_footer() { ?>
 	<footer>
-	<div id="socialmedia">	
-	<a href="<?php echo SOCIAL_PINTEREST; ?>" target="_blank"><i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i></a>
-	</div>
 	
 	<div id="impressum">
-	<p>Alle Inhalte &copy; 2018 <a href="<?php echo ADMIN_HOMEPAGE; ?>" target="_blank"><?php echo ADMIN_HOMEPAGE; ?></a>
+	<p>Alle Inhalte &copy; 2019 <a href="<?php echo ADMIN_HOMEPAGE; ?>" target="_blank"><?php echo ADMIN_HOMEPAGE; ?></a>
 	<a href="mailto:<?php echo ADMIN_EMAIL; ?>"> | E-Mail</a></p>
 	</div>
 	

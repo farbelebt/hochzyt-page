@@ -31,7 +31,7 @@ function show_navigation() {
 		echo "<li>" . render_navigation_link("do=festprogramm_detailliert_anzeigen", "Detailprogramm") . "</li>";
 	}
 
-	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "An- & Abmeldung") . "</li>";
+	echo "<li>" . render_navigation_link("do=registrierung_anzeigen", "An-/Abmeldung") . "</li>";
 	if ($_SESSION["level"] <= 3) {
 		echo "<li>" . render_navigation_link("do=geschenkliste_anzeigen", "Schenken") . "</li>";
 		echo "<li>" . render_navigation_link("do=fotoalbum_anzeigen", "Fotos") . "</li>";
