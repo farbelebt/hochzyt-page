@@ -44,6 +44,20 @@ function fotoalbum_verarbeiten() {
 			$zielOrt = 'uploads/' . uniqid() . $endung;
 			move_uploaded_file($tempOrt, $zielOrt);
 
+			$html = file_get_contents('fotoalbum_mailvorlage.html');
+			$txt = file_get_contents('fotoalbum_mailvorlage.txt');
+
+			include 'classes/PHPMailerAutoload.php';
+
+			$notification = new PHPMailer();
+			$notification ->FromName = CONTACT_FROM_NAME;
+			$notification ->From = CONTACT_EMAIL;
+			$notification ->Subject = "Foto hochgeladen";
+			$notification ->IsHTML (TRUE);
+			$notification ->Body = $html;
+			$notification ->AltBody = $txt;
+			$notification ->AddAddress($email, $name);
+
 			$sql = 'INSERT INTO
 						photo_album (bildpfad, originalname, datum, userid)
 					VALUES (

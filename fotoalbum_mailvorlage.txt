@@ -1,0 +1,2 @@
+Fotoalbum:
+Ein neues Foto wurde im Fotoalbum hochgeladen.
